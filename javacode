@@ -1,0 +1,880 @@
+package jdr;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to THE GAME \n\n  Click 'y' to continue");
+
+
+
+
+
+
+		// PERSONNAGE 
+		Personnage Olaf = new Personnage("Olaf",100,(int) Math.floor(Math.random() * (50 - 40 + 1) + 40));
+		Personnage Jax = new Teammate("Jax",90,(int)(Math.random()*(60 - 30 + 1) + 30));
+		Personnage Lesion = new Teammate("Lesion",70,(int)(Math.random()*(40 - 20 + 1) + 40));
+		Personnage Kai  = new Teammate("Kai",80,(int)(Math.random()*(50 - 30 + 1) + 30));
+		Personnage Cassius = new Teammate("Cassius",120,(int)(Math.random()*(50 - 25 + 1) + 25));	
+
+
+
+
+
+		// PERSONNAGE ENNEMI
+		/* SALLE 1 */ Personnage Hibana = new Boss("Hibana",200,(int)(Math.random()*(65 - 50 + 1) + 50));
+		/*SALLE 2 */ Personnage Hismaelle = new Boss ("Hismaelle",300, (int)(Math.random()*(150-70+1)+70));
+		/*SALLE 3 */ Personnage Zoltar = new Boss ("Zoltar",400, (int)(Math.random()*(200-100+1)+100));
+		/*SALLE 4 */ Personnage Vesperia = new Boss ("Vesperia",500, (int)(Math.random()*(250-130+1)+130));
+		/*SALLE 5 */ Personnage Thanos = new Boss ("Thanos",600, (int)(Math.random()*(300-1600+1)+1600));
+
+
+
+
+
+
+
+
+		ArrayList<Personnage> listePerso = new ArrayList<Personnage>();
+
+		listePerso.add(Olaf);		
+
+
+
+		ArrayList<Personnage> Persoadd = new ArrayList<Personnage>();
+		Persoadd.add(Jax);
+		Persoadd.add(Lesion);
+		Persoadd.add(Kai);
+		Persoadd.add(Cassius);
+
+		int person = (int) (Math.random() * Persoadd.size());
+		Personnage person1 = Persoadd.get(person);
+
+		// ITEM D'ATTAQUE 
+		Item AngelSword = new Item("Angel Sword",(int) Math.floor(Math.random() * (20 - 5+ 1) + 5));
+		Item Eyeofluden = new Item("Eye Of Luden",(int)Math.floor(Math.random() * (20 - 5+ 1) + 5));
+		Item Bladeoftheruinedking = new Item("Blade Of The Ruined King",(int) Math.floor(Math.random() * (20 - 5+ 1) + 5));
+		Item Startear = new Item("Star\'s Tear",(int)Math.floor(Math.random() * (20 - 5+ 1) + 5));
+
+
+		ArrayList<Item> ListeItem = new ArrayList<Item>();
+
+		ListeItem.add(AngelSword);
+		ListeItem.add(Eyeofluden);
+		ListeItem.add(Bladeoftheruinedking);
+		// ITEM D'ATTAQUE 
+
+
+
+
+		// LES SALLES DU DONJON 
+		ArrayList<Salle> listeSalle = new ArrayList<Salle>();
+		Salle Salle1= new Salle(" Blaze Chamber");
+		Salle Salle3 = new Salle("Enigmatic Den " );
+		Salle Salle2 = new Salle("Arcane Sanctum");
+		Salle Salle4 = new Salle("Observatory" );
+		Salle Salle5 = new Salle("Infinity Throne Room");
+		listeSalle.add(Salle1);
+		listeSalle.add(Salle2);
+		listeSalle.add(Salle3);
+		listeSalle.add(Salle4);
+		listeSalle.add(Salle5);
+
+
+
+		Salle sallechoose = null;
+		Salle sallechoose1 = null;
+		Salle sallechoose2 = null;
+		Salle sallechoose3 = null;
+		Salle sallechoose4 = null;
+
+
+		//		ATTACK DES PERSO 
+		Attack Olaf1 = new Attack("Ice Strike" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack Olaf2 = new Attack("Ice Spear" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack Olaf3 = new Attack("Winter's Roar" ,(int) Math.floor(Math.random() * (120 - 60 + 1) + 60) );
+
+		// ATTACK LEVEL UP 2 
+		Attack Olaf4 = new Attack("Frozen Blade" ,(int) Math.floor(Math.random() * (70 - 60 + 1) + 60) );
+		Attack Olaf5 = new Attack("Northern Hammer Strike" ,(int) Math.floor(Math.random() * (75 - 60 + 1) + 60) );
+		Attack Olaf6 = new Attack("Blizzard Winds" ,(int) Math.floor(Math.random() * (130 - 94 + 1) + 94) );
+
+		Attack Hibana1 = new Attack("Eruption" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack Hibana2 = new Attack("Bloodthirsty Blade" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack Hibana3 = new Attack("Dragon blade slash" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+
+
+
+
+		ArrayList<Attack> listeboss = new ArrayList<Attack>();
+		listeboss.add(Hibana1);
+		listeboss.add(Hibana2);
+		listeboss.add(Hibana3);
+
+
+		Attack CDS1 = new Attack("Crimson Dragon Strike" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack WBL2 = new Attack("Whirling Blades of Lightning" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack HHC3 = new Attack("Heavenly Hammer Crush" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+
+		ArrayList<Attack> listefighter = new ArrayList<Attack>();
+		listefighter.add(CDS1);
+		listefighter.add(WBL2);
+		listefighter.add(HHC3);
+
+
+		Attack DLB1 = new Attack("Divine Light Burst" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack H2 = new Attack("Healing" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack GB3 = new Attack("Grace Beam" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+
+
+
+		ArrayList<Attack> listehealer = new ArrayList<Attack>();
+		listehealer.add(DLB1);
+		listehealer.add(H2);
+		listehealer.add(GB3);
+		Attack AB1 = new Attack("Arcane Blast" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack FN2 = new Attack("Frost Nova" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack TS3 = new Attack("Thunderbolt Storm" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+
+
+
+		ArrayList<Attack> listemage = new ArrayList<Attack>();
+		listemage.add(AB1);
+		listemage.add(FN2);
+		listemage.add(TS3);
+
+
+
+		Attack SB1 = new Attack("Shield Bash" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack FS2 = new Attack("Fortress Slam" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+		Attack RS3 = new Attack("Retribution Strike" ,(int) Math.floor(Math.random() * (30 - 10 + 1) + 10) );
+
+		ArrayList<Attack> listetank = new ArrayList<Attack>();
+		listetank.add(SB1);
+		listetank.add(FS2);
+		listetank.add(RS3);
+
+
+		//		SOINS DES POTIONS 
+		Potion potionsoin = new Potion("Healing Potion", (int)(Math.random()*(3 - 1 + 1) + 1) , 40);	
+		//		SOINS DES POTIONS 	
+
+		Personnage personnage1;
+		Personnage personnage2;
+		Item item1;
+		Item item2;
+
+		while (true) {
+
+			String input = scanner.next(); 
+
+			if (input.equalsIgnoreCase("y")) { 
+
+				System.out.println("\n  Here is YOUR Champ : ");
+				Olaf.description();
+
+				break; // Sortir de la boucle
+
+			}
+
+		}
+
+
+
+		// FIRST TEAMMATE 
+
+		while (true) {
+
+			String input = scanner.next(); 
+
+			if (input.equalsIgnoreCase("y")) { 
+				System.out.println("\n Choose 2 Teammate Between : 'Jax' ( The Fighter )  , 'Lesion' ( The Healer ) , 'Kai' ( The black mage ) or 'Cassius' ( The Tank )  \n");
+
+			}else {
+				switch (input.toLowerCase()) {
+				case "jax":
+				case "jax the fighter":
+					personnage1 = Jax;
+					listePerso.add(Jax);
+					Persoadd.remove(Jax);
+					System.out.println("\n NICE ! You Choose Jax (Fighter) ! ");
+					break;
+				case "lesion":
+				case "lesion the healer":
+					personnage1 = Lesion;
+					listePerso.add(Lesion);
+					Persoadd.remove(Lesion);
+					System.out.println("\nWELL DONE ! You Choose Lesion (Healer) ");
+					break;
+				case "kai":
+				case "kai the black mage":
+					personnage1 = Kai;
+					listePerso.add(Kai);
+					Persoadd.remove(Kai);
+					System.out.println("\nGOOD JOB ! You Choose Kai (Mage) ! ");
+					break;
+				case "cassius":
+				case "cassius the tank":
+					personnage1 = Cassius;
+					listePerso.add(Cassius);
+					Persoadd.remove(Cassius);
+					System.out.println("\nYEAHH ! You Choose Cassius (Tank) ! ");
+					break;
+				default:
+					System.out.println("\nInvalid input. Please try again.");
+					continue; // Continue la boucle pour demander une nouvelle entrée
+				}
+				System.out.println("\n Choose a last Teammate ! ");
+				break;
+			}
+
+		}
+
+
+
+		// SECOND TEAMMATE 
+
+		while (true) {
+
+			String input = scanner.next(); 
+
+			if (input.equalsIgnoreCase("Jax") || input.equalsIgnoreCase("Jax The Greatest WeaponMaster")) {
+				personnage2 = Jax;				
+				listePerso.add(Jax);
+				Persoadd.remove(Jax);
+				if (personnage1 == personnage2){
+					System.out.println("Your Second Teammate Can't Be Jax ..RELOAD..");;
+					continue ;
+				}
+				System.out.println("NICE ! You Choose Jax (Fighter) ! ");
+
+				System.out.println( "\nYour Teammate is  : " +" "+personnage1.getName() + " And " + personnage2.getName()   + "\n What A Nice Team !!  (Click On 'Y' + 'ENTER' To Continue) ");
+				break;
+			}
+			else if (input.equalsIgnoreCase("Lesion") || input.equalsIgnoreCase("Lesion The Healer")) {
+				personnage2 = Lesion;
+				Persoadd.remove(Lesion);
+				listePerso.add(Lesion);
+				if (personnage1 == personnage2){
+					System.out.println("Your Second Teammate Can't Be Lesion ..RELOAD..");;
+					continue;
+				}
+				System.out.println("WELL DONE ! You Choose Lesion (Healer) ! ");
+
+				System.out.println( "\nYou Choose : " +" "+personnage1.getName() + " And " + personnage2.getName()  + "\nWhat A Nice Team !!  (Click On 'Y' + 'ENTER' To Continue) ");
+				break;
+			}
+			else if (input.equalsIgnoreCase("Kai") || input.equalsIgnoreCase("Kai The black mage")) {
+				personnage2 = Kai;
+				listePerso.add(Kai);
+				Persoadd.remove(Kai);
+				if (personnage1 == personnage2){
+					System.out.println("Your Second Teammate Can't Be Kai ..RELOAD..");;
+					continue;
+				}
+				System.out.println("GOOD JOB ! You Choose Kai (Mage) ! ");
+
+				System.out.println( "\nYou Choose : " +" "+personnage1.getName() + " And " + personnage2.getName()   + "\n What A Nice Team !!  (Click On 'Y' + 'ENTER' To Continue) ");
+				break;
+			}
+			else if (input.equalsIgnoreCase("Cassius") || input.equalsIgnoreCase("Cassius The Tank")) {
+				personnage2 = Cassius;
+				listePerso.add(Cassius);
+				Persoadd.remove(Cassius);
+				if (personnage1 == personnage2){
+					System.out.println("Your Second Teammate Can't Be Cassius ..RELOAD..");;
+					continue;
+				}
+				System.out.println("YEAHH ! You Choose Cassius (Tank) ! ");
+
+
+				System.out.println( "\nYou Choose : " +" "+personnage1.getName() + " And " + personnage2.getName()   + "\n What A Nice Team !!  (Click On 'Y' + 'ENTER' To Continue) ");
+				break;
+			}
+
+		}
+
+		// CHOOSE ITEM 
+
+		while (true) {
+
+			String input=scanner.next();
+			if (input.equalsIgnoreCase("y")) {
+
+				System.out.println("\n Choose Your Item : \n- Angel Sword ('Angel') , \n- Eye Of Luden ('Eye') , \n- Blade Of The Ruined King ('BOTRK') \n- '1' for Random ? \n");
+			}
+
+			else if ((input.equalsIgnoreCase("Angel Sword") || input.equalsIgnoreCase("Angel") )) {
+				item1 = AngelSword;
+				System.out.println("\n Good Choice ! ");
+				AngelSword.description();
+				System.out.println("I Think You're Ready..");
+				break;
+			}
+			else if (input.equalsIgnoreCase("Eye") || input.equalsIgnoreCase("Eye of luden")) {
+				item1 = Eyeofluden;
+				System.out.println("\n Good Choice ! ");
+				Eyeofluden.description();
+				System.out.println("I Think You're Ready..");
+				break;
+			}
+			else if (input.equalsIgnoreCase("BLADE") || input.equalsIgnoreCase("Blade of the ruined king") || input.equalsIgnoreCase("BOTRK")) {
+				item1 = Bladeoftheruinedking;
+				Bladeoftheruinedking.description();
+				System.out.println("\nI Think You're Ready..");
+				break;
+			}else if (input.equalsIgnoreCase("1")) {
+				int alea = (int) (Math.random() * ListeItem.size());
+				Item item23 = ListeItem.get(alea);
+				item1 = item23;
+				item23.description();
+				System.out.println("\nI Think You're Ready..");
+				break;
+			}
+		}
+
+
+		//		CHOOSE ROOM 
+		while (true) {
+			String input1 = scanner.next();
+			if (input1.equalsIgnoreCase("y")) {
+				System.out.println("Choose Your First Hall:\n-'1' " + Salle1.name + "\n-'2' " + Salle2.name + "\n-'3' " + Salle3.name + "\n-'4' " + Salle4.name + "\n-'5' " + Salle5.name);
+				input1 = scanner.next();
+
+				if (input1.equalsIgnoreCase("1")) {
+					System.out.println("You Choose The " + Salle1.name);
+					sallechoose = Salle1;
+					listeSalle.remove(Salle1);
+
+				} else if (input1.equalsIgnoreCase("2")) {
+					System.out.println("You Choose The " + Salle2.name);
+					sallechoose = Salle2;
+					listeSalle.remove(Salle2);
+
+				} else if (input1.equalsIgnoreCase("3")) {
+					System.out.println("You Choose The " + Salle3.name);
+					listeSalle.remove(Salle3);
+					sallechoose = Salle3;
+
+				} else if (input1.equalsIgnoreCase("4")) {
+					System.out.println("You Choose The " + Salle4.name);
+					listeSalle.remove(Salle4);
+					sallechoose = Salle4;
+
+				} else if (input1.equalsIgnoreCase("5")) {
+					System.out.println("You Choose The " + Salle5.name);
+					sallechoose = Salle5;
+					listeSalle.remove(Salle5);
+				}
+			}
+			if (!input1.equalsIgnoreCase("y")) {
+				break; // Ajout de la condition de sortie pour sortir de la boucle
+			}
+		}
+
+		//		BOUCLE DES NIVEAUX
+
+		while (true) {
+			String input= scanner.next();
+			if (input.equalsIgnoreCase("y")) {
+				System.out.println("....LEVEL 1....\n"); 
+				Hibana.description();
+				System.out.println("\n In The :"+sallechoose.getName());
+				System.out.println("Your Champ : "+ Olaf.getName() + "\nYout Item : "+ item1.getName() +" With "+potionsoin.getNombre()+" healing potions "+ "\nYour Teammate : "+personnage1.getName()+" And "+personnage2.getName()+"\n\n\n");
+
+				break;
+			}
+		}
+
+		//		DEBUT COMBAT 
+
+		while (true) {
+			int degats = Olaf1.damage + item1.damage_itm;
+			int degats2 = Olaf2.damage + item1.damage_itm;
+			int degats3 = Olaf3.damage + item1.damage_itm;
+			System.out.println("Click 'y' to continue  + 'ENTER' \n\n");
+			System.out.println("during the attack presentation the item damage isn't counted \n");
+			for (int i = 0; Hibana.getPv() > 0 || Olaf.getPv() > 0; i++) {
+
+				if (i == 0) {
+					String input = scanner.next();
+					System.out.println("It's Your turn ");
+					if (input.equalsIgnoreCase("y")) {
+						System.out.println("Choose your Attack : \n- 'A' for " + Olaf1.name +" , Damage : "+degats+ "\n- 'Z' for " + Olaf2.name+" , Damage : "+Olaf2.damage
+								+ "\n- 'R' for " + Olaf3.name +" , Damage : "+Olaf3.damage+ " ( ONLY if your PV is lower than 50 (actually: " + Olaf.getPv() + ")) \n- 'P' for Healing Potion (actually : " + potionsoin.getNombre() + ")");
+						input = scanner.next(); 
+						if (input.equalsIgnoreCase("A")) {
+							Hibana.setPv(Hibana.getPv() - (degats));
+							System.out.println("You Choose " + Olaf1.name);
+							System.out.println("This hit hurt " + Hibana.getName() + ", she has " + Hibana.getPv() + " HP left.\n");
+						} else if (input.equalsIgnoreCase("Z")) {
+							System.out.println("You Choose " + Olaf2.name);
+							Hibana.setPv(Hibana.getPv() - degats2);
+							System.out.println("This hit hurt " + Hibana.getName() + ", she has " + Hibana.getPv() + " HP left.\n");
+						} else if (input.equalsIgnoreCase("R") && Olaf.getPv() < 50) {
+							System.out.println("You Choose " + Olaf3.name);
+							Hibana.setPv(Hibana.getPv() - degats3);
+							System.out.println("BOOOMMM ! This hit hurt " + Hibana.getName() + ", she has " + Hibana.getPv() + " HP left.\n");
+						} else if (input.equalsIgnoreCase("P") && Olaf.getPv() < 100) {
+							if ( potionsoin.getNombre()<= 0) {
+								System.out.println("You Have No More Potions ");
+								continue;
+							}else  {
+
+								System.out.println("You Choose " + potionsoin.getName());
+								potionsoin.setNombre(potionsoin.getNombre() - 1);
+								Olaf.setPv(Olaf.getPv() + potionsoin.getPv());
+								System.out.println("NICEEE now you get : " + Olaf.getPv() + " Pv");
+							}
+						} 
+					}
+				}
+
+				else if (i==1 && personnage1.getPv()>0 ) {
+					int indexAleatoire = (int) (Math.random() * listefighter.size());
+					Attack perso1 = listefighter.get(indexAleatoire);
+					String input= scanner.next();
+					Hibana.setPv(Hibana.getPv() - perso1.damage);
+					System.out.println("It's "+ personnage1.getName()+" turn ");
+					System.out.println(personnage1.getName()+" choose : "+perso1.name);
+					System.out.println("This hit hurt " + Hibana.getName() + ", she has " + Hibana.getPv() + " HP left.\n");
+					if (!input.equalsIgnoreCase("y")) {
+						continue;
+					}
+
+
+				} 
+				else if (i==2 && personnage2.getPv()>0) {
+
+					int ale = (int) (Math.random() * listemage.size());
+					Attack perso2 = listemage.get(ale);
+					String input= scanner.next();
+					Hibana.setPv(Hibana.getPv() - perso2.damage);
+					System.out.println("It's " + personnage2.getName() + "'s turn.");
+					System.out.println(personnage2.getName()+" choose : "+perso2.name);
+					System.out.println("This hit hurt " + Hibana.getName() + ", she has " + Hibana.getPv() + " HP left.\n");
+
+					if (!input.equalsIgnoreCase("y")) {
+						continue;
+					}
+				} 
+
+
+				else if (i==3 ) {
+					if (personnage1.getPv()<=0){
+						System.out.println(personnage1.getName()+" OUT");
+						listePerso.remove(personnage1);
+					}
+					if (personnage2.getPv()<=0){
+						System.out.println(personnage2.getName()+" OUT");
+						listePerso.remove(personnage2);
+					}
+					String input = scanner.next();
+					int jsp = (int) (Math.random() * listePerso.size());
+					Personnage perso = listePerso.get(jsp);
+					System.out.println("It's " + Hibana.getName() + "'s turn.");
+					System.out.println(Hibana.getName()+ " has chosen to attack " + perso.getName());
+					perso.setPv(perso.getPv() - Hibana.getDamage());
+					System.out.println("This hit hurt " + perso.getName() + ", he has " + perso.getPv() + " HP left.\n");
+					if (!input.equalsIgnoreCase("y")) {
+						continue;
+					}
+				}
+
+				if (Olaf.getPv() <= 0){
+					System.err.println("You're Dead, retry");
+					System.exit(0);
+				}
+				else if (Hibana.getPv() <= 0) {
+					personnage1.reinitialiserPv();
+					personnage2.reinitialiserPv();
+					System.out.println("YOU WIN ! GO TO NEXT LEVEL ");
+					break;
+
+				}// boucle dans le combat 
+				continue;
+			}
+			break;
+		}
+
+
+			while (true) {
+				String input = scanner.next();
+				item2 = Startear;
+				Olaf.setPv(200);
+				System.out.println("You receive : \n-New Item :"+ item2.name+" \n-You're Now At : "+Olaf.getPv()+" Pv" +" \n-2 Potions \n-"+"New Teammate "+person1.getName());
+
+				if (input.equalsIgnoreCase("y")) {
+					System.out.println(".................Welcome To The LEVEL 2.................\n"); 
+
+					System.out.println("Choose Your Second Hall:\n-'1' " + Salle1.name + "\n-'2' " + Salle2.name + "\n-'3' " + Salle3.name + "\n-'4' " + Salle4.name + "\n-'5' " + Salle5.name);
+					input = scanner.next();
+
+					if (input.equalsIgnoreCase("1")) {
+						sallechoose1 = Salle1;
+						if (sallechoose1 == sallechoose ) {
+							System.out.println("You Can't Choose This One... ");
+							System.out.println("Click 'Y' ");
+							int randomsalle = (int) (Math.random() * listeSalle.size());
+							Salle Sallerandom = listeSalle.get(randomsalle);
+							sallechoose1= Sallerandom;
+							System.out.println("You Choose The " + Sallerandom.name);
+							continue;
+						}
+						System.out.println("You Choose The " + Salle1.name);
+
+					} else if (input.equalsIgnoreCase("2")) {
+						sallechoose1 = Salle2;
+						if (sallechoose1 == sallechoose ) {
+							System.out.println("You Can't Choose This One... ");
+							int randomsalle = (int) (Math.random() * listeSalle.size());
+							Salle Sallerandom = listeSalle.get(randomsalle);
+							sallechoose1= Sallerandom;
+							continue;
+						}
+						System.out.println("You Choose The " + Salle2.name);
+
+					} else if (input.equalsIgnoreCase("3")) {
+						sallechoose1 = Salle3;
+						if (sallechoose1 == sallechoose ) {
+							System.out.println("You Can't Choose This One... ");
+							int randomsalle = (int) (Math.random() * listeSalle.size());
+							Salle Sallerandom = listeSalle.get(randomsalle);
+							sallechoose1= Sallerandom;
+							continue;
+						}
+						System.out.println("You Choose The " + Salle3.name);
+
+					} else if (input.equalsIgnoreCase("4")) {
+						sallechoose1 = Salle4;
+						if (sallechoose1 == sallechoose ) {
+							System.out.println("You Can't Choose This One... ");
+							int randomsalle = (int) (Math.random() * listeSalle.size());
+							Salle Sallerandom = listeSalle.get(randomsalle);
+							sallechoose1= Sallerandom;
+							continue;
+						}
+						System.out.println("You Choose The " + Salle4.name);
+					} else if (input.equalsIgnoreCase("5")) {
+						sallechoose1 = Salle5;
+						if (sallechoose1 == sallechoose ) {
+							System.out.println("You Can't Choose This One... ");
+							int randomsalle = (int) (Math.random() * listeSalle.size());
+							Salle Sallerandom = listeSalle.get(randomsalle);
+							sallechoose1= Sallerandom;
+							continue;
+						}
+						System.out.println("You Choose The " + Salle5.name);
+					}
+				} while (sallechoose1 == null);
+				System.out.println("\nDarkness enveloped the abandoned mansion, as eerie whispers echoed through the halls, and unseen eyes glowed with malevolence, waiting to ensnare the unwary traveler\n");
+				System.out.println("\n");
+				potionsoin.setNombre(potionsoin.getNombre()+2);
+				System.out.println("Your Champ : "+ Olaf.getName() + "\nYour Items: "+ item1.getName() +" , "+ item2.getName() + " With "+potionsoin.getNombre()+" healing potions "+ "\nYour Teammate : "+personnage1.getName()+" , "+personnage2.getName()+" And " + person1.getName() );
+
+				break;
+
+			}
+			while (true) {
+				System.out.println("Click 'y' to continue  + 'ENTER' \n");
+				System.out.println("The Big Boss Of "+sallechoose1.getName()+ " Is : "+Hismaelle.getName()+" And He Get : "+Hismaelle.getPv()+ " Pv");
+				int degat4 = Olaf4.damage + item1.damage_itm+item2.damage_itm;
+				int degat5 = Olaf5.damage + item1.damage_itm+item2.damage_itm;
+				int degat6 = Olaf6.damage + item1.damage_itm+item2.damage_itm;
+				for (int y = 0; Hismaelle.getPv() > 0 || Olaf.getPv() > 0; y++) {
+
+					if (y == 0) {
+						String input = scanner.next();
+						System.err.println("Dont Spam, Just Wait, It's Coming !!");
+						System.out.println("during the attack presentation the item damage isn't counted \n");
+						System.out.println("It's Your turn ");
+						if (input.equalsIgnoreCase("y")) {
+							System.out.println("Olaf level up, He Got New Attack :\n");
+							System.out.println("Choose your Attack : \n- 'A' for " + Olaf4.name +" , Damage : "+Olaf4.damage+ "\n- 'Z' for " + Olaf5.name+" , Damage : "+Olaf5.damage
+									+ "\n- 'R' for " + Olaf6.name +" , Damage : "+Olaf6.damage+ " ( ONLY if your PV is lower than 50 (actually: " + Olaf.getPv() + ")) \n- 'P' for Healing Potion (actually : " + potionsoin.getNombre() + ")");
+							input = scanner.next(); 
+							if (input.equalsIgnoreCase("A")) {
+
+								Hismaelle.setPv(Hismaelle.getPv() - degat4);
+								System.out.println("You Choose " + Olaf4.name);
+								System.out.println("This hit hurt " + Hismaelle.getName() + ", he has " + Hismaelle.getPv() + " HP left.\n");
+							} else if (input.equalsIgnoreCase("Z")) {
+								System.out.println("You Choose " + Olaf5.name);
+								Hismaelle.setPv(Hismaelle.getPv() - degat5);
+								System.out.println("This hit hurt " + Hismaelle.getName() + ", he has " + Hismaelle.getPv() + " HP left.\n");
+							} else if (input.equalsIgnoreCase("R") && Olaf.getPv() < 50) {
+								System.out.println("You Choose " + Olaf6.name);
+								Hismaelle.setPv(Hismaelle.getPv() - degat6);
+								System.out.println("BOOOMMM ! This hit hurt " + Hismaelle.getName() + ", he has " + Hismaelle.getPv() + " HP left.\n");
+							} else if (input.equalsIgnoreCase("P") && Olaf.getPv() < 200) {
+								if ( potionsoin.getNombre()<= 0) {
+									System.out.println("You Have No More Potions ");
+									continue;
+								}else {
+
+									System.out.println("You Choose " + potionsoin.getName());
+									Olaf.setPv(Olaf.getPv() + potionsoin.getPv());
+									potionsoin.setNombre(potionsoin.getNombre() - 1);
+									System.out.println("NICEEE now you get : " + Olaf.getPv() + " Pv");
+								}
+							} 
+						}
+					}
+
+					else if (y==1 && personnage1.getPv()>0) {	
+						int indexAleatoire = (int) (Math.random() * listefighter.size());
+						Attack perso1 = listefighter.get(indexAleatoire);
+						String input= scanner.next();
+						Hismaelle.setPv(Hismaelle.getPv() - perso1.damage);
+						System.out.println("It's "+ personnage1.getName()+" turn ");
+						System.out.println(personnage1.getName()+" choose : "+perso1.name);
+						System.out.println("This hit hurt " + Hismaelle.getName() + ", she has " + Hismaelle.getPv() + " HP left.\n");
+						if (!input.equalsIgnoreCase("y")) {
+							continue;
+						}
+
+
+					} else if (y==2 && personnage2.getPv()>0) {
+
+						int ale = (int) (Math.random() * listemage.size());
+						Attack perso2 = listemage.get(ale);
+						String input= scanner.next();
+						Hismaelle.setPv(Hismaelle.getPv() - perso2.damage);
+						System.out.println("It's " + personnage2.getName() + "'s turn.");
+						System.out.println(personnage2.getName()+" choose : "+perso2.name);
+						System.out.println("This hit hurt " + Hismaelle.getName() + ", she has " + Hismaelle.getPv() + " HP left.\n");
+
+						if (!input.equalsIgnoreCase("y")) {
+							continue;
+						}	
+					}else if (y==3) {
+						if (personnage1.getPv()<=0){
+							System.out.println(personnage1.getName()+" OUT");
+							listePerso.remove(personnage1);
+						}
+						if (personnage2.getPv()<=0){
+							System.out.println(personnage2.getName()+" OUT");
+							listePerso.remove(personnage2);
+						}
+						String input = scanner.next();
+						int jsp = (int) (Math.random() * listePerso.size());
+						Personnage perso = listePerso.get(jsp);
+						System.out.println("It's " + Hismaelle.getName() + "'s turn.");
+						System.out.println(Hismaelle.getName()+ " has chosen to attack " + perso.getName());
+						if (!input.equalsIgnoreCase("y")) {
+							continue;
+						}
+						perso.setPv(perso.getPv() - Hismaelle.getDamage());
+						System.out.println("This hit hurt " + perso.getName() + ", he has " + perso.getPv() + " HP left.\n");
+					}
+
+					if (Olaf.getPv() <= 0){
+						System.err.println("You're Dead, retry");
+						System.exit(0);
+					}
+					else if (Hismaelle.getPv() <= 0) {
+						Olaf.reinitialiserPv();
+						personnage1.reinitialiserPv();
+						personnage2.reinitialiserPv();
+						System.out.println("YOU WIN ! GO TO NEXT LEVEL ");
+						break;
+					}
+				}// boucle dans le combat 
+				break;
+			}
+			
+			
+		while (true) {
+			String input = scanner.next();
+			item2 = Startear;
+			Olaf.setPv(200);
+			System.out.println("You receive : \n-New Item :"+ item2.name+" \n-You're Now At : "+Olaf.getPv()+" Pv" +" \n-2 Potions \n-"+"New Teammate "+person1.getName());
+
+			if (input.equalsIgnoreCase("y")) {
+				System.out.println(".................Welcome To The LEVEL 2.................\n"); 
+
+				System.out.println("Choose Your Second Hall:\n-'1' " + Salle1.name + "\n-'2' " + Salle2.name + "\n-'3' " + Salle3.name + "\n-'4' " + Salle4.name + "\n-'5' " + Salle5.name);
+				input = scanner.next();
+
+				if (input.equalsIgnoreCase("1")) {
+					sallechoose1 = Salle1;
+					if (sallechoose1 == sallechoose ) {
+						System.out.println("You Can't Choose This One... ");
+						System.out.println("Click 'Y' ");
+						int randomsalle = (int) (Math.random() * listeSalle.size());
+						Salle Sallerandom = listeSalle.get(randomsalle);
+						sallechoose1= Sallerandom;
+						System.out.println("You Choose The " + Sallerandom.name);
+						continue;
+					}
+					System.out.println("You Choose The " + Salle1.name);
+
+				} else if (input.equalsIgnoreCase("2")) {
+					sallechoose1 = Salle2;
+					if (sallechoose1 == sallechoose ) {
+						System.out.println("You Can't Choose This One... ");
+						int randomsalle = (int) (Math.random() * listeSalle.size());
+						Salle Sallerandom = listeSalle.get(randomsalle);
+						sallechoose1= Sallerandom;
+						continue;
+					}
+					System.out.println("You Choose The " + Salle2.name);
+
+				} else if (input.equalsIgnoreCase("3")) {
+					sallechoose1 = Salle3;
+					if (sallechoose1 == sallechoose ) {
+						System.out.println("You Can't Choose This One... ");
+						int randomsalle = (int) (Math.random() * listeSalle.size());
+						Salle Sallerandom = listeSalle.get(randomsalle);
+						sallechoose1= Sallerandom;
+						continue;
+					}
+					System.out.println("You Choose The " + Salle3.name);
+
+				} else if (input.equalsIgnoreCase("4")) {
+					sallechoose1 = Salle4;
+					if (sallechoose1 == sallechoose ) {
+						System.out.println("You Can't Choose This One... ");
+						int randomsalle = (int) (Math.random() * listeSalle.size());
+						Salle Sallerandom = listeSalle.get(randomsalle);
+						sallechoose1= Sallerandom;
+						continue;
+					}
+					System.out.println("You Choose The " + Salle4.name);
+				} else if (input.equalsIgnoreCase("5")) {
+					sallechoose1 = Salle5;
+					if (sallechoose1 == sallechoose ) {
+						System.out.println("You Can't Choose This One... ");
+						int randomsalle = (int) (Math.random() * listeSalle.size());
+						Salle Sallerandom = listeSalle.get(randomsalle);
+						sallechoose1= Sallerandom;
+						continue;
+					}
+					System.out.println("You Choose The " + Salle5.name);
+				}
+			} while (sallechoose1 == null);
+			System.out.println("\nDarkness enveloped the abandoned mansion, as eerie whispers echoed through the halls, and unseen eyes glowed with malevolence, waiting to ensnare the unwary traveler\n");
+			System.out.println("\n");
+			potionsoin.setNombre(potionsoin.getNombre()+2);
+			System.out.println("Your Champ : "+ Olaf.getName() + "\nYour Items: "+ item1.getName() +" , "+ item2.getName() + " With "+potionsoin.getNombre()+" healing potions "+ "\nYour Teammate : "+personnage1.getName()+" , "+personnage2.getName()+" And " + person1.getName() );
+
+			break;
+
+		}
+		
+		while (true) {
+			System.out.println("Click 'y' to continue  + 'ENTER' \n");
+			System.out.println("The Big Boss Of "+sallechoose1.getName()+ " Is : "+Hismaelle.getName()+" And He Get : "+Hismaelle.getPv()+ " Pv");
+			int degat4 = Olaf4.damage + item1.damage_itm+item2.damage_itm;
+			int degat5 = Olaf5.damage + item1.damage_itm+item2.damage_itm;
+			int degat6 = Olaf6.damage + item1.damage_itm+item2.damage_itm;
+			for (int u = 0; Hismaelle.getPv() > 0 || Olaf.getPv() > 0; u++) {
+
+				if (u == 0) {
+					String input = scanner.next();
+					System.out.println("during the attack presentation the item damage isn't counted \n");
+					System.out.println("It's Your turn ");
+					if (input.equalsIgnoreCase("y")) {
+						System.out.println("Olaf level up, He Got New Attack :\n");
+						System.out.println("Choose your Attack : \n- 'A' for " + Olaf4.name +" , Damage : "+Olaf4.damage+ "\n- 'Z' for " + Olaf5.name+" , Damage : "+Olaf5.damage
+								+ "\n- 'R' for " + Olaf6.name +" , Damage : "+Olaf6.damage+ " ( ONLY if your PV is lower than 50 (actually: " + Olaf.getPv() + ")) \n- 'P' for Healing Potion (actually : " + potionsoin.getNombre() + ")");
+						input = scanner.next(); 
+						if (input.equalsIgnoreCase("A")) {
+
+							Hismaelle.setPv(Hismaelle.getPv() - degat4);
+							System.out.println("You Choose " + Olaf4.name);
+							System.out.println("This hit hurt " + Hismaelle.getName() + ", he has " + Hismaelle.getPv() + " HP left.\n");
+						} else if (input.equalsIgnoreCase("Z")) {
+							System.out.println("You Choose " + Olaf5.name);
+							Hismaelle.setPv(Hismaelle.getPv() - degat5);
+							System.out.println("This hit hurt " + Hismaelle.getName() + ", he has " + Hismaelle.getPv() + " HP left.\n");
+						} else if (input.equalsIgnoreCase("R") && Olaf.getPv() < 50) {
+							System.out.println("You Choose " + Olaf6.name);
+							Hismaelle.setPv(Hismaelle.getPv() - degat6);
+							System.out.println("BOOOMMM ! This hit hurt " + Hismaelle.getName() + ", he has " + Hismaelle.getPv() + " HP left.\n");
+						} else if (input.equalsIgnoreCase("P") && Olaf.getPv() < 200) {
+							if ( potionsoin.getNombre()<= 0) {
+								System.out.println("You Have No More Potions ");
+								continue;
+							}else {
+
+								System.out.println("You Choose " + potionsoin.getName());
+								Olaf.setPv(Olaf.getPv() + potionsoin.getPv());
+								potionsoin.setNombre(potionsoin.getNombre() - 1);
+								System.out.println("NICEEE now you get : " + Olaf.getPv() + " Pv");
+							}
+						} 
+					}
+				}
+
+				else if (u==1 && personnage1.getPv()>0) {	
+					int indexAleatoire = (int) (Math.random() * listefighter.size());
+					Attack perso1 = listefighter.get(indexAleatoire);
+					String input= scanner.next();
+					Hismaelle.setPv(Hismaelle.getPv() - perso1.damage);
+					System.out.println("It's "+ personnage1.getName()+" turn ");
+					System.out.println(personnage1.getName()+" choose : "+perso1.name);
+					System.out.println("This hit hurt " + Hismaelle.getName() + ", she has " + Hismaelle.getPv() + " HP left.\n");
+					if (!input.equalsIgnoreCase("y")) {
+						continue;
+					}
+
+
+				} else if (u==2 && personnage2.getPv()>0) {
+
+					int ale = (int) (Math.random() * listemage.size());
+					Attack perso2 = listemage.get(ale);
+					String input= scanner.next();
+					Hismaelle.setPv(Hismaelle.getPv() - perso2.damage);
+					System.out.println("It's " + personnage2.getName() + "'s turn.");
+					System.out.println(personnage2.getName()+" choose : "+perso2.name);
+					System.out.println("This hit hurt " + Hismaelle.getName() + ", she has " + Hismaelle.getPv() + " HP left.\n");
+
+					if (!input.equalsIgnoreCase("y")) {
+						continue;
+					}	
+				}else if (u==4) {
+					if (personnage1.getPv()<=0){
+						System.out.println(personnage1.getName()+" OUT");
+						listePerso.remove(personnage1);
+					}
+					if (personnage2.getPv()<=0){
+						System.out.println(personnage2.getName()+" OUT");
+						listePerso.remove(personnage2);
+					}
+					String input = scanner.next();
+					int jsp = (int) (Math.random() * listePerso.size());
+					Personnage perso = listePerso.get(jsp);
+					System.out.println("It's " + Hismaelle.getName() + "'s turn.");
+					System.out.println(Hismaelle.getName()+ " has chosen to attack " + perso.getName());
+					if (!input.equalsIgnoreCase("y")) {
+						continue;
+					}
+					perso.setPv(perso.getPv() - Hismaelle.getDamage());
+					System.out.println("This hit hurt " + perso.getName() + ", he has " + perso.getPv() + " HP left.\n");
+					System.err.println("Dont Spam, Just Wait, It's Coming !!");
+				}
+
+				if (Olaf.getPv() <= 0){
+					System.err.println("You're Dead, retry");
+					System.exit(0);
+				}
+				else if (Hismaelle.getPv() <= 0) {
+					Olaf.reinitialiserPv();
+					personnage1.reinitialiserPv();
+					personnage2.reinitialiserPv();
+					System.out.println("YOU WIN ! GO TO NEXT LEVEL ");
+					break;
+				}
+			}// boucle dans le combat 
+
+		}
+		}	
+	}
+
+
